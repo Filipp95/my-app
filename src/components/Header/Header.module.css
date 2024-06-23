@@ -1,0 +1,10 @@
+.header {
+    background-color: yellow;
+    grid-area: header;
+  }
+  
+.logo_img {
+    height: 110px;
+    margin: 0px;
+    padding: 0px;
+  }

@@ -1,0 +1,13 @@
+.nav {
+    background-color:green;
+    grid-area: nav;
+  }
+.nav p {
+    margin: 0px;
+    padding: 0px;
+  }
+
+.active {
+  color: orange;
+  text-decoration: underline;
+}

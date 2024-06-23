@@ -3,46 +3,20 @@
 } */
 
 .app-wrapper {
-  margin: 0 auto;
-  max-width: 1500px; 
-  display: grid; 
+  margin: 0 15px;
+  max-width: 1600px;
+  display: grid;
   row-gap: 15px;
   column-gap: 10px;
   grid-template-columns: 150px auto auto;
-  grid-template-areas: 
-  "header header header"
-  "nav content content";
+  grid-template-areas:
+    "header header header"
+    "nav content content";
 }
 
-.header {
-  background-color: yellow;
-  grid-area: header;
-}
-
-.logo-img {
-  height: 110px;
-  margin: 0px;
-  padding: 0px;
-}
-
-.nav {
-  background-color:green;
-  grid-area: nav;
-}
-.nav p {
-  margin: 0px;
-  padding: 0px;
-}
-
-.profile {
-  background-color: red;
+.app-wrapper-content {
+  background-color: rgb(231, 168, 168);
   grid-area: content;
   padding: 0px;
   margin: 0px;
-}
-
-.profile-img {
-  height: 200px;
-  width: 100%;
-
 }
