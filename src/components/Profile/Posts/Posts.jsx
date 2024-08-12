@@ -1,16 +1,24 @@
 import React from "react";
 import s from './Posts.module.css';
+import Post from "./Post/Post";
+
+let PostsBase = [
+  { id: 1, message: 'My most favorite players are Del Piero, Buffon and Mandzukic. Who is yours?', count: '20' },
+  { id: 2, message: 'Finally I got here!', count: '15' },
+  { id: 3, message: 'Juve Merda! Inter is the greatest club in the world!', count: '0' },
+]
+
+let PostsElements = [PostsBase.map(Posts => <Post message={Posts.message} count={Posts.count} />)]
 
 function Posts(props) {
   return (
-    <div className={s.item}>
-      <img className={s.profile_ava_img} src="https://e7.pngegg.com/pngimages/998/963/png-clipart-juventus-logo-illustration-juventus-f-c-juventus-stadium-serie-a-u-s-citta-di-palermo-dream-league-soccer-minal-aidin-emblem-trademark.png" />
-      <div>
-        {props.message}
+    <div className={s.PostsWrapper}>
+      <h3> Posts </h3>
+      <div className={s.NewPostBlock}>
+        <textarea> </textarea>
+        <button className={s.ButtonBlock}> Add Post </button>
       </div>
-      <div><button>Like</button>
-        <span className={s.likes_count}> Likes: {props.count} </span>
-      </div>
+      {PostsElements}
     </div>
   )
 }

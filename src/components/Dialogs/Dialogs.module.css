@@ -1,0 +1,29 @@
+.dialogs {
+    display: flex;
+    flex-direction: row;
+}
+
+.dialog_list { 
+    padding: 10px;
+    font-size: 1.4em;
+}
+
+.chats {
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.dialog {
+    color:bisque;
+    padding: 2px;
+    text-decoration: none;
+}
+
+.message {
+    padding: 2px;
+}
+
+.active_dialog {
+    color:snow;
+    text-decoration: none;
+}

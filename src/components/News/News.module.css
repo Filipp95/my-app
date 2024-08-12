@@ -1,0 +1,6 @@
+.news_wrapper {
+    background-color: brown;
+    color: black;
+    font-size: 1.2rem;
+    display: grid;
+}

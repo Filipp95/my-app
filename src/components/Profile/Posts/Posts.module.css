@@ -1,12 +1,14 @@
-.item {
-  display: flex;
+.PostsWrapper {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.profile_ava_img {
-  height: 60px;
-  border-radius: 60px;
+.ButtonBlock {
+    display: block;
 }
 
-.likes_count{
-  color:rgb(0, 255, 234);
+h3 {
+    padding-top: 0px;
+    margin-top: 0px;
 }
