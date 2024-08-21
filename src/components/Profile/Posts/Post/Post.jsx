@@ -1,10 +1,11 @@
 import React from "react";
 import s from './Post.module.css';
+import profileAva from './../../ProfileInfo/assets/img/my_ava_profile.png'
 
 const Post = (props) => {
     return (
         <div className={s.item}>
-            <img className={s.profile_ava_img} src="https://e7.pngegg.com/pngimages/998/963/png-clipart-juventus-logo-illustration-juventus-f-c-juventus-stadium-serie-a-u-s-citta-di-palermo-dream-league-soccer-minal-aidin-emblem-trademark.png" />
+            <img className={s.profile_ava_img} src={profileAva}/>
             <div>
                 {props.message}
             </div>

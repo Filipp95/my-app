@@ -1,0 +1,13 @@
+.friends_block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color:white;
+  padding: 2px;
+}
+
+.friends_ava {
+  height: 35px;
+  width: 35px;
+  margin-bottom: 2px;
+}

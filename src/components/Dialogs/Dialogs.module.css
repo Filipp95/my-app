@@ -3,27 +3,17 @@
     flex-direction: row;
 }
 
-.dialog_list { 
-    padding: 10px;
-    font-size: 1.4em;
+.dialogs_visualization {
+    display: grid;
+    text-align: justify;
 }
 
-.chats {
-    padding: 10px;
-    font-size: 1.2em;
+.chats_visualization {
+    display: grid;
+    text-align: justify;
+    margin-left: 10px;
 }
 
-.dialog {
-    color:bisque;
-    padding: 2px;
-    text-decoration: none;
-}
-
-.message {
-    padding: 2px;
-}
-
-.active_dialog {
-    color:snow;
-    text-decoration: none;
+.new_message {
+    display: block;
 }

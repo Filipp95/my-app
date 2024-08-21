@@ -1,0 +1,28 @@
+.chat_positioning {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    /* border: thin solid black; */
+    padding: 3p
+}
+
+.message {
+    display: flex;
+    align-items: center;
+}
+
+.my_message {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.message_text {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.profile_ava_img {
+    height: 25px;
+    border-radius: 20px;
+}
