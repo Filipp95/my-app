@@ -2,20 +2,21 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogList from './DialogList/DialogList';
 import Chats from './Chats/Chats';
+import { addMessageActionCreator } from '../../redux/store';
+import { updateNewTextActionCreator } from '../../redux/store';
+
 
 const Dialogs = (props) => {
     let DialogElements = props.state.dialogPage.dialogs.map(Dialog => <DialogList id={Dialog.id.toString()} name={Dialog.name} />)
     let MessageElements = props.state.dialogPage.messages.map(Chat => <Chats message={Chat.message} />)
-    let newMessageElement = React.createRef();
 
     let addMessage = () => {
-        let message = newMessageElement.current.value;
-        props.addNewMessage(message);
+        props.dispatch(addMessageActionCreator());
     }
 
-    let listenToChange = () => {
-        let newText = newMessageElement.current.value;
-        props.updateNewText(newText);
+    let listenToChange = (event) => {
+        let text = event.target.value;
+        props.dispatch(updateNewTextActionCreator(text));
     }
 
     return (
@@ -25,8 +26,8 @@ const Dialogs = (props) => {
             </div>
             <div className={s.chats_visualization}>
                 {MessageElements}
-                <textarea ref={newMessageElement} onChange={listenToChange} value={props.state.newText} />
-                <button onClick={addMessage}> add Message </button>
+                <textarea onChange={listenToChange} value={props.state.newText} />
+                <button onClick={addMessage}> Add message </button>
             </div>
         </div>
     )

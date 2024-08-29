@@ -8,7 +8,7 @@ const setActive = ({ isActive }) => {
 };
 
 function Navbar(props) {
-    let Friends_list=props.Friends.map(Friend => <Friends name={Friend.name} ava={Friend.ava}/>) 
+    let friendsList=props.friends.map(Friend => <Friends name={Friend.name} ava={Friend.ava}/>) 
     return (
         <div className={s.wrapper}>
             <nav className={`${s.item} ${s.nav}`}>
@@ -32,7 +32,7 @@ function Navbar(props) {
                 Friends
             </div>
             <div className={s.friends_list}>
-                {Friends_list}
+                {friendsList}
             </div>
         </div>
     )
