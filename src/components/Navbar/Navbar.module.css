@@ -14,18 +14,3 @@
   color:aquamarine
 } 
 
-.friends_text {
-  background-color: green;
-  padding-top: 50px;
-  color:yellow;
-  font-size: 1.5rem;
-}
-
-.friends_list {
-  background-color: green;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  cursor: none;
-  padding-top: 10px;
-}

@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const UPDATE_NEW_TEXT = 'UPDATE-NEW-TEXT';
-
+import profilePageReducer from "./profile-page-reducer";
+import dialogsPageReducer from "./dialogs-page-reducer";
 
 let store = {
   _state: {
@@ -26,7 +24,6 @@ let store = {
         { id: 3, message: "sport?" },
         { id: 4, message: "Wanna beer?" },
       ],
-      newMessageText: ' ',
     },
     sideBar: {
       friends: [
@@ -44,77 +41,17 @@ let store = {
   getState() {
     return this._state;
   },
-  subscriber(observer) {
+  subscribe(observer) {
     this._callSubscriber = observer;
   },
 
-  // addNewPost() {
-  //   debugger;
-  //   let newPost = {
-  //     id: 5,
-  //     message: this._state.newText,
-  //     count: 0
-  //   };
-  //   this._state.profilePage.posts.push(newPost)
-  //   this._state.newText = '';
-  //   this._callSubscriber(this._state);
-  // },
-  // updateNewText(newTextMessage) {
-  //   this._state.newText = newTextMessage;
-  //   this._callSubscriber(this._state);
-  // },
-  // addNewMessage() {
-  //   let newMessage =
-  //   {
-  //     id: 1,
-  //     message: this._state.newText
-  //   };
-  //   this._state.dialogPage.messages.push(newMessage);
-  //   this._state.newText = '';
-  //   this._callSubscriber(this._state);
-  // },
-
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
-      let newPost = {
-        id: 5,
-        message: this._state.newText,
-        count: 0
-      };
-      this._state.profilePage.posts.push(newPost)
-      this._state.newText = '';
-      this._callSubscriber(this._state)
-    }
-    else if (action.type === 'UPDATE-NEW-TEXT') {
-      this._state.newText = action.newText;
-      this._callSubscriber(this._state);
-    }
-    else if (action.type === 'ADD-NEW-MESSAGE') {
-      let newMessage =
-      {
-        id: 1,
-        message: this._state.newText
-      };
-      this._state.dialogPage.messages.push(newMessage);
-      this._state.newText = '';
-      this._callSubscriber(this._state);
-    }
+    this._state = profilePageReducer(this._state, action)
+    this._state = dialogsPageReducer(this._state, action)
+    this._callSubscriber(this._state)
+    debugger
   },
 }
-
-export const addPostActionCreator = () => {
-  return ({type: ADD_POST})
-};
-
-export const addMessageActionCreator = () => {
-  return ({ type: ADD_NEW_MESSAGE});
-}
-
-export const updateNewTextActionCreator = (text) => {
-  return ({type: UPDATE_NEW_TEXT, newText: text})
-}
-
-
 
 export default store;
 window.store = store;

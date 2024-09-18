@@ -1,13 +1,13 @@
-import React from "react";
-import s from './Friends.module.css';
+import React from "react"
+import s from "./../Friends.module.css"
 
-const Friends = (props) => {
+const FriendsList = (props) => {
     return (
         <div className={s.friends_block}>
             <img src={props.ava} alt="friends ava" className={s.friends_ava} />
             {props.name}
-        </div>
-    )
+        </div >
+)
 }
 
-export default Friends;
+export default FriendsList
