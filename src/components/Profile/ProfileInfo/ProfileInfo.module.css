@@ -1,8 +1,30 @@
+.profileInfo {
+  padding: 10px;
+  display: flex;
+}
+
+.descriptionBlock{
+  padding-left: 15px;
+}
+
 .profile_img {
   height: 200px;
   width: 100%;
 }
 
-.descriptionBlock {
-  padding: 10px;
+.memberPageImage {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(231, 168, 168);
+}
+
+.member {
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+}
+
+.profilePhoto {
+  height: 200px;
+  width: 220px;
 }

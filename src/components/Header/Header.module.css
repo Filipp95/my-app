@@ -1,10 +1,22 @@
 .header {
-    background-color: yellow;
-    grid-area: header;
-  }
-  
+  background-color: yellow;
+  grid-area: header;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo_img {
-    height: 110px;
-    margin: 0px;
-    padding: 0px;
-  }
+  height: 110px;
+}
+
+.loginBlock {
+  padding-right: 10px;
+}
+
+.loginBlock_text {
+  text-decoration: none;
+  color: maroon;
+  font-size: 1.4rem;
+}

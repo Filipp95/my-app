@@ -1,45 +1,62 @@
-import React from "react"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { userAPI } from "../../api/api";
 import s from './Users.module.css';
-import * as axios from 'axios';
 
 let Users = (props) => {
-    
-if (props.users.length === 0) {
-    props.setUsers([
-        { id: 1, followed: false, fullName: 'Natasha', location: { city: 'Moscow', country: 'Russia' }, status: 'We will meet!', ava: './woman.png' },
-        { id: 2, followed: true, fullName: 'Alexey', location: { city: 'Astana', country: 'Kazakhstan' }, status: 'Juve is the best', ava: './man.png' },
-        { id: 3, followed: false, fullName: 'Misha', location: { city: 'Moscow', country: 'Russia' }, status: 'I like Real Madrid', ava: './boy.png' },
-        { id: 4, followed: true, fullName: 'Fabrizio', location: { city: 'Palermo', country: 'Italy' }, status: 'Who cares?', ava: './man.png' },
-    ],)
-}
-
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
+    }
     return (
         <div>
+            <div>
+                {pages.map(page => {
+                    return (
+                        <span className={props.currentPage === page ? s.selected_page : s.pages}
+                            onClick={() => { props.onPageChanged(page) }}
+                        >{page}
+                        </span>)
+                })}
+            </div>
             {props.users.map(user =>
-                    <div key={user.id}>
-                        <span>
-                            <div><img src={user.ava} className={s.usersAva} /></div>
-                            <div>
-                                {user.followed ?
-                                    <button onClick={() => { props.unfollow(user.id) }}>Unfollow</button> :
-                                    <button onClick={() => { props.follow(user.id) }}>Follow</button>}
-                            </div>
-                        </span>
-                        <span>
-                            <div>{user.fullName}</div>
-                            <div>{user.status}</div>
-                        </span>
-                        <span>
-                            <div>{user.location.city}</div>
-                            <div>{user.location.country}</div>
-                        </span>
-                    </div>
-                )
-            }
-        </div>
-    )
+                <div key={user.id}>
+                    <span>
+                        <div><NavLink to={'/profile/' + user.id}><img src={user.photos.small === null ? './man.png' : user.photos.small} className={s.usersAva} /></NavLink></div>
+                        <div>
+                            {user.followed ?
+                                <button disabled={props.isFollowProcessing.some(id => id===user.id)} onClick={() => {
+                                    props.toggleFollowingProcess(true, user.id);
+                                    userAPI.deleteUser(user.id).then(data => {
+                                        debugger
+                                        if (data.resultCode === 0) {
+                                            props.unFollow(user.id)
+                                        }
+                                        props.toggleFollowingProcess(false, user.id);
+                                    });
+                                }}>Unfollow</button> :
+                                 <button disabled={props.isFollowProcessing.some(id => id===user.id)} onClick={() => {
+                                    props.toggleFollowingProcess(true, user.id);
+                                    userAPI.postUser(user.id).then(data => {
+                                        if (data.resultCode === 0) {
+                                            props.follow(user.id)
+                                        }
+                                        props.toggleFollowingProcess(false, user.id);
+                                    })
+                                }}>Follow</button>}
+                        </div>
+                    </span>
+                    <span>
+                        <div>{user.name}</div>
+                        <div>{user.status}</div>
+                    </span>
+                    <span>
+                        <div>{"user.location.city"}</div>
+                        <div>{"user.location.country"}</div>
+                    </span>
+                </div>)}
+        </div>)
 }
 
-
-
-export default Users
+export default Users;
