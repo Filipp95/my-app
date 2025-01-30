@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/gh-pages/static/css/main.99a5e163.css",
+    "main.js": "/gh-pages/static/js/main.5818743b.js",
+    "static/media/Wolves_My_Time.mp3": "/gh-pages/static/media/Wolves_My_Time.41170d892fbdc542ccde.mp3",
+    "static/media/mandzukic.mp4": "/gh-pages/static/media/mandzukic.b39dc41101d27e8eec07.mp4",
+    "static/media/my_ava_profile.png": "/gh-pages/static/media/my_ava_profile.5ca2b48d0410d3adc9f5.png",
+    "static/media/juve_ava.png": "/gh-pages/static/media/juve_ava.d9d905737902609cd08e.png",
+    "static/media/no.webp": "/gh-pages/static/media/no.552beaa04540cddcc9f7.webp",
+    "static/media/default_ava.webp": "/gh-pages/static/media/default_ava.6482d5923e2fa41ecccf.webp",
+    "index.html": "/gh-pages/index.html",
+    "static/media/preloader.svg": "/gh-pages/static/media/preloader.3f91e8809ab59201827774dac8a1b0ad.svg",
+    "main.99a5e163.css.map": "/gh-pages/static/css/main.99a5e163.css.map",
+    "main.5818743b.js.map": "/gh-pages/static/js/main.5818743b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99a5e163.css",
+    "static/js/main.5818743b.js"
+  ]
+}
