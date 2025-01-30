@@ -8,21 +8,23 @@ import News from './components/News/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
+import LoginPage from './components/Login/LoginContainer';
 
 const App = () => {
- return (
+  return (
     <BrowserRouter>
       <div className='app-wrapper'>
-        <HeaderContainer/>
-        <Navbar/>
+        <HeaderContainer />
+        <Navbar />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path='/profile/:userID?' element={<ProfileContainer/>} />
-            <Route path='/dialogs/*' element={<DialogsContainer/>}/>
-            <Route path='/news' element={<News/>} />
-            <Route path='/music' element={<Music/>} />
-            <Route path='/users' element={<UsersContainer/>}/>
-            <Route path='/settings' element={<Settings/>} />
+            <Route path='/login' element={<LoginPage/>} />
+            <Route path='/profile/:userID?' element={<ProfileContainer />} />
+            <Route path='/dialogs/*' element={<DialogsContainer />} />
+            <Route path='/news' element={<News />} />
+            <Route path='/music' element={<Music />} />
+            <Route path='/users' element={<UsersContainer />} />
+            <Route path='/settings' element={<Settings />} />
           </Routes>
         </div>
       </div>

@@ -1,9 +1,10 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore} from "@reduxjs/toolkit";
 import dialogsPageReducer from "./dialogs-page-reducer";
 import profilePageReducer from "./profile-page-reducer";
 import sideBarReducer from "./side-bar-reducer";
 import usersPageReducer from "./users-page-reducer";
 import authReducer from "./auth-reducer";
+import {reducer as formReducer} from 'redux-form';
 
 let reducers = combineReducers ({
     profilePage: profilePageReducer,
@@ -11,6 +12,7 @@ let reducers = combineReducers ({
     usersPage: usersPageReducer,
     sideBar: sideBarReducer,
     auth: authReducer,
+    form: formReducer,
 });
 
 let store = configureStore({reducer : reducers});

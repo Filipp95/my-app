@@ -1,45 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
-import { userAPI } from "../../api/api";
-import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingProcess, toggleIsFetching, unFollow } from "../../redux/users-page-reducer";
+import { compose } from "redux";
+import { followTC, getUsersThunkCreator, unFollowTC } from "../../redux/users-page-reducer";
 import Preloader from "../Preloader/Preloader";
 import Users from "./Users";
+
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.toggleIsFetching(true)
-    userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-      this.props.toggleIsFetching(false)
-      this.props.setUsers(data.items)
-      this.props.setTotalUsersCount(data.totalCount)
-      console.log("Users prop in container:", this.props.users);
-    });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
-
   onPageChanged = (pageNumber) => {
-    this.props.toggleIsFetching(true)
-    this.props.setCurrentPage(pageNumber)
-    userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-      this.props.toggleIsFetching(false)
-      this.props.setUsers(data.items)
-    });
+    this.props.getUsers(pageNumber, this.props.pageSize)
   }
 
   render() {
     return (
       <>
-        {this.props.isFetching ? <Preloader/> : null}
+        {this.props.isFetching ? <Preloader /> : null}
         <Users totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged.bind(this)}
-          unFollow={this.props.unFollow}
-          follow={this.props.follow}
           users={this.props.users}
           isFetching={this.props.isFetching}
-          isFollowProcessing = {this.props.isFollowProcessing}
-          toggleFollowingProcess = {this.props.toggleFollowingProcess}
+          isFollowProcessing={this.props.isFollowProcessing}
+          toggleFollowingProcess={this.props.toggleFollowingProcess}
+          followTC={this.props.followTC}
+          unFollowTC={this.props.unFollowTC}
         />
       </>)
   }
@@ -67,6 +56,5 @@ let mapStateToProps = (state) => {
 //   }
 // }
 
-export default connect(mapStateToProps, {follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProcess})(UsersContainer)
-
+export default compose(connect(mapStateToProps, { getUsers: getUsersThunkCreator, followTC, unFollowTC }))(UsersContainer) 
 

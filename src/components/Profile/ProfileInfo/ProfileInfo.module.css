@@ -28,3 +28,9 @@
   height: 200px;
   width: 220px;
 }
+
+.profile_status{
+  font-size: 1.5em;
+  font-family:"'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif'";
+  color: blue
+}

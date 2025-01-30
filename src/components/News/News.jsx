@@ -3,6 +3,7 @@ import s from './News.module.css';
 import v from './assets/videos/mandzukic.mp4';
 
 const News = (props) => {
+
     return (
         <div className={s.news_wrapper}>
             Mandzukic scored Goal vs Real-Madrid. 

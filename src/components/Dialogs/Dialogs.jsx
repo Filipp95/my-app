@@ -1,7 +1,7 @@
 import React from 'react';
-import s from './Dialogs.module.css';
-import DialogList from './DialogList/DialogList';
 import Chats from './Chats/Chats';
+import DialogList from './DialogList/DialogList';
+import s from './Dialogs.module.css';
 
 const Dialogs = (props) => {
     let DialogElements = props.dialogPage.dialogs.map(Dialog => <DialogList id={Dialog.id.toString()} key={Dialog.id} name={Dialog.name} />)

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   withCredentials: true,
-  headers: { 'API-KEY': "da515f31-569e-4173-8937-805f8fac0a39" },
+  headers: { 'API-KEY': "8173aa67-5dbd-4704-826f-8afb5bb6a033" },
   baseURL: `https://social-network.samuraijs.com/api/1.0/`
 })
 
@@ -31,18 +31,41 @@ export const userAPI = {
 }
 
 export const authAPI = {
-  getAuth(){
+  getMe(){
     return (
     instance.get(`auth/me`)
     .then(response => response.data)
     )
-  }
+  },
+
+  postLogin() {
+    return (
+      instance.post('auth/login')
+      .then(response => response.data)
+    )
+  },
+
 }
 
 export const profileAPI = {
   getProfile(userID) {
     return(
-    instance.get(`profile/${userID}`).then(response=>response.data)
+    instance.get(`profile/${userID}`).
+    then(response=>response.data)
+    )
+  },
+
+  getStatus(userID) {
+    return(
+    instance.get(`profile/status/${userID}`).
+    then(response=>response.data)
+    )
+  },
+
+  updateStatus(status) {
+    return(
+    instance.put(`profile/status/`, {status: status}) // Смотрим в документации, что должно приходить. В нашем случае объект {} со свойством status. 
     )
   }
+
 }

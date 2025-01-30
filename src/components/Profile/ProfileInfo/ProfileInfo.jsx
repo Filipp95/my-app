@@ -4,6 +4,7 @@ import Preloader from "../../Preloader/Preloader";
 import yes from './assets/img/yes.png';
 import no from './assets/img/no.webp';
 import defaultPhoto from './assets/img/default_ava.webp';
+import ProfileStatus from "./ProfileStatus";
 
 
 const ProfileInfo = (props) => {
@@ -26,6 +27,7 @@ const ProfileInfo = (props) => {
                 <img src={!props.profilePhoto.large? defaultPhoto:props.profilePhoto.large} className ={s.profilePhoto}/>
                 <div className={s.descriptionBlock}> 
                     <div><h2>{props.userFullName}</h2></div>
+                    <div><ProfileStatus status = {props.status} updateStatusTC={props.updateStatusTC}/></div>
                     <div>{props.userInfo}</div>
                     <div>  {contactList.map(contact => (
                         <div key={contact.platform}>

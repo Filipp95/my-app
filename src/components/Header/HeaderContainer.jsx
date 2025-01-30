@@ -1,22 +1,14 @@
 import React, { useEffect } from "react";
-import Header from "./Header";
-import axios from "axios";
-import { setAuthUserData, setUserAuthProfilePhoto } from "../../redux/auth-reducer";
 import { connect } from "react-redux";
-import { authAPI } from "../../api/api";
+import { getAuthThunkCreator } from "../../redux/auth-reducer";
+import Header from "./Header";
 
 
 const HeaderContainer = (props) => {
-    useEffect(() => {
-        authAPI.getAuth().then(data => {
-            if (data.resultCode === 0) {
-                let { id, email, login } = data.data;
-                props.setAuthUserData(id, email, login) 
-            }
-        })
-    },
-        []
-    );
+    useEffect(()=>{
+        props.getAuthThunkCreator()
+    },[]
+);
     return (
         <Header {...props} />
     )
@@ -33,4 +25,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, { setAuthUserData, setUserAuthProfilePhoto })(HeaderContainer);
+export default connect(mapStateToProps, { getAuthThunkCreator})(HeaderContainer);

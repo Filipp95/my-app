@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE_PHOTO = 'SET_USER_PROFILE_PHOTO';
@@ -6,6 +8,7 @@ const SET_USER_INFO = 'SET_USER_INFO';
 const SET_USER_CONTACTS = 'SET_USER_CONTACTS';
 const CHECK_JOB_STATUS = 'CHECK_JOB_STATUS';
 const SET_JOB_STATUS_DESCRIPTION = 'SET_JOB_STATUS_DESCRIPTION';
+const SET_STATUS = 'SET_STATUS';
 
 export const addPostActionCreator = () => { return ({ type: ADD_POST }) };
 export const updateNewPostTextActionCreator = (text) => { return ({ type: UPDATE_NEW_POST_TEXT, newPostText: text }) }
@@ -15,6 +18,41 @@ export const setUserInfo = (userInfo) => { return ({ type: SET_USER_INFO, userIn
 export const setUserContacts = (userContacts) => { return ({ type: SET_USER_CONTACTS, userContacts }) }
 export const checkJobStatus = (jobStatus) => { return ({ type: CHECK_JOB_STATUS, jobStatus }) }
 export const setJobStatusDescription = (jobStatusDescription) => { return ({ type: SET_JOB_STATUS_DESCRIPTION, jobStatusDescription }) }
+export const setStatus = (status) => { return ({ type: SET_STATUS, status }) }
+
+
+export const getProfileTC = (userID) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userID).then(data => {
+            dispatch(setUserProfilePhoto(data.photos))
+            dispatch(setUserFullName(data.fullName))
+            dispatch(setUserInfo(data.aboutMe))
+            dispatch(setUserContacts(data.contacts))
+            dispatch(checkJobStatus(data.lookingForAJob))
+            dispatch(setJobStatusDescription(data.lookingForAJobDescription))
+        })
+    }
+}
+
+export const getStatusTC = (userID) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userID).then(data => 
+                dispatch(setStatus(data))
+        )
+    }
+}
+
+export const updateStatusTC = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            }
+        })
+    }
+}
+
+
 
 let initialState = {
     profilePhoto: {},
@@ -28,6 +66,7 @@ let initialState = {
         { id: 3, message: 'Finally I got here!', count: '0' },
     ],
     newPostText: '',
+    status: '',
 }
 
 const profilePageReducer = (state = initialState, action) => {
@@ -77,6 +116,11 @@ const profilePageReducer = (state = initialState, action) => {
             return {
                 ...state,
                 jobStatusDescription: action.jobStatusDescription,
+            }
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status,
             }
         default:
             return state
